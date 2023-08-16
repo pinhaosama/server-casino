@@ -24,4 +24,4 @@ async function authenticateAnswer(req) {
     });
 }
 
-module.exports = {authenticateUser};
+module.exports = {authenticateAnswer};

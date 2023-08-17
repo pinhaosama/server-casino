@@ -1,3 +1,10 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+const app = express();
+const port = 3000;
+
 const fs = require('fs'); // import fs module
 const { parse } = require("csv-parse"); // import csv-parse into a 'parse' object
 
@@ -93,13 +100,13 @@ app.post('/slot', (req, res) => {
         reward = 0;
         break;
 
+      }
     } else {
       // マッチしなかった場合の処理（ゲームオーバー）
       /* Handling the non-match case (Game over) */
 
       // reward = 0;
     }
-  }
     // 結果に基づいてスコアを計算
     /* Calculate the score based on the result */
 

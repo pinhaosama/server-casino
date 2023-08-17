@@ -1,7 +1,7 @@
 const fs = require('fs'); // import fs module
 const { parse } = require("csv-parse"); // import csv-parse into a 'parse' object
 
-async function readCsvFile(file) {
+async function readCsvFileBJ(file) {
     return new Promise((resolve, reject) => {
         const results = [];
 
@@ -54,7 +54,7 @@ async function getUserInfo() {
 }
 
 module.exports = {
-    readCsvFile,
+    readCsvFileBJ,
     shuffle,
     getUserInfo
 };

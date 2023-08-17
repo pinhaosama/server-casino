@@ -78,7 +78,7 @@ app.post('/blackjack', async function (req, res) {
 
     if (reqTask === 'coin') {
         try {
-            console.log(req);
+            console.log('req.body:',req.body);
             // const username = reqBody.username;
             // const password = reqBody.password;
             // await addUser(filePath, username, password);

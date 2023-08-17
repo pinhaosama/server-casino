@@ -10,6 +10,7 @@ const {
     shuffle,
     getUserInfo
 } = require('./my-modules/blackjack-server.js');
+const { readCsvFile } = require('./my-modules/slot.js');
 
 app.use(cors({
     origin: 'http://localhost:5000'

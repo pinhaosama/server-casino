@@ -3,10 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-// const textBodyParser = bodyParser.text({ limit: '20mb', defaultCharset: 'utf-8' });
 const port = 3000;
 
-// const { authenticateAnswer } = require('./my-modules/question.js');
 const { readCsvFile, shuffle } = require('./my-modules/blackjack-server.js');
 
 app.use(cors({
@@ -32,7 +30,6 @@ app.get('/blackjack', async function (req, res) {
     // TASK Check
     if (reqTask === 'blackjack') {
         try {
-            // readCsvFile returns an array of arrays with the data from the .csv
             let csvFileData = await readCsvFile('./data/Cards.csv');
             csvFileData = shuffle(csvFileData);
 

@@ -22,8 +22,6 @@ app.options('/', (req, res) => {
 
 app.get('/', async function(req, res) {
 
-    console.log('req.headers: ', req.headers); 
-
     const reqOrigin = req.headers['origin'];
     const reqTask = req.headers['task'];
 

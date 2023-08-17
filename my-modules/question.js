@@ -4,7 +4,7 @@ const answerData = './data/answers.json';
 
 async function authenticateAnswer(req) {
 
-    const queryAnswer = req.query;
+    const {answer} = req.query;
 
     return new Promise((resolve, reject) => {
         fs.readFile(answerData, 'utf-8', (err, fileData) => {
@@ -13,13 +13,14 @@ async function authenticateAnswer(req) {
                 return;
             }
 
-            const answers = JSON.parse(fileData);
+            const questions = JSON.parse(fileData);
 
-            if (queryAnswer == answers["math"]) {
+            if (answer == questions["math"].answer) {
                 resolve(true);
             } else {
-                console.log(queryAnswer);
-                console.log(answers["math"]);
+                console.log(answer);
+                console.log(questions["math"].answer);
+
                 resolve(false);
             }
         });

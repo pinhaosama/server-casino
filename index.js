@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 
 const {
-    readCsvFile,
+    readCsvFileBJ,
     shuffle,
     getUserInfo
 } = require('./my-modules/blackjack-server.js');
@@ -35,7 +35,7 @@ app.get('/blackjack', async function (req, res) {
     // TASK Check
     if (reqTask === 'blackjack') {
         try {
-            let csvFileData = await readCsvFile('./data/Cards.csv');
+            let csvFileData = await readCsvFileBJ('./data/Cards.csv');
             csvFileData = shuffle(csvFileData);
 
             // prepare and send the response to the client:

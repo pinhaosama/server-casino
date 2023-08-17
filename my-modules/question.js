@@ -1,23 +1,25 @@
 const fs = require('fs');
 
-const answers = './data/answers.json';
+const answerData = './data/answers.json';
 
 async function authenticateAnswer(req) {
 
-    const answer = req.query;
+    const queryAnswer = req.query;
 
     return new Promise((resolve, reject) => {
-        fs.readFile(answers, 'utf-8', (err, fileData) => {
+        fs.readFile(answerData, 'utf-8', (err, fileData) => {
             if (err) {
                 reject(err);
                 return;
             }
 
-            const answersF = JSON.parse(fileData);
+            const answers = JSON.parse(fileData);
 
-            if (answersF[answer] === password) {
+            if (queryAnswer == answers["math"]) {
                 resolve(true);
             } else {
+                console.log(queryAnswer);
+                console.log(answers["math"]);
                 resolve(false);
             }
         });

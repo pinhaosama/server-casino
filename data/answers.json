@@ -1,4 +1,5 @@
 {
-    "answer1":"4",
-    "answer2":"peixe"
+    "math":{
+        "answer":"4"       
+    }
 }

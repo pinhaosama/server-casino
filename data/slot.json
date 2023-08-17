@@ -1,5 +1,5 @@
 {
-    "slots": [2, 5, 8],
-    "initialSpeed": 400,
+    "slots": [1, 3, 5],
+    "initialSpeed": [100,400,200],
     "initialScore": 0
   }

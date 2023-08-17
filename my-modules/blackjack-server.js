@@ -41,7 +41,20 @@ function shuffle(deck) {
     return deck;
 }
 
+async function getUserInfo() {
+    return new Promise((resolve, reject) => {
+        fs.readFile('./data/blackjack-user.json', 'utf-8', (err, fileData) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve(JSON.parse(fileData));
+        });
+    });
+}
+
 module.exports = {
     readCsvFile,
-    shuffle
+    shuffle,
+    getUserInfo
 };

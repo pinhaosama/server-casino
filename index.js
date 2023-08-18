@@ -11,7 +11,7 @@ const {
     getUserInfo
 } = require('./my-modules/blackjack-server.js');
 const { readCsvFile } = require('./my-modules/slot.js');
-const { roulette } = requrie('./my-modules/roulette')
+const { roulette } = require('./my-modules/roulette')
 
 app.use(cors({
     origin: 'http://localhost:5000'

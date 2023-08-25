@@ -53,8 +53,31 @@ async function getUserInfo() {
     });
 }
 
+async function changeCoin(coinNum) {
+    let filePath = './data/blackjack-user.json';
+
+    console.log(coinNum);
+    return new Promise((resolve, reject) => {
+        const fileData = fs.readFileSync(filePath);
+
+        console.log(coinNum);
+        coin = {
+            "username": "user1",
+            "coin": coinNum
+        };
+        // console.log(coin);
+
+        fs.writeFileSync(filePath, JSON.stringify(coin));
+        // console.log(`User ${username} was added to users.json`);
+
+        resolve();
+
+    });
+}
+
 module.exports = {
     readCsvFileBJ,
     shuffle,
-    getUserInfo
+    getUserInfo,
+    changeCoin
 };

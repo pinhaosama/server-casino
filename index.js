@@ -12,7 +12,7 @@ const {
     changeCoin
 } = require('./my-modules/blackjack-server.js');
 const { readCsvFile } = require('./my-modules/slot.js');
-const { roulette } = require('./my-modules/roulette')
+const { roulette, writeJSON } = require('./my-modules/roulette')
 
 app.use(cors({
     origin: 'http://localhost:3000'
@@ -108,23 +108,22 @@ app.get('/roulette', async function (req, res) {
     console.log("Processing request from " + reqOrigin + " for route " + req.url + " with method " + req.method + " for task: " + reqTask);
 
     // TASK Check
-    if (reqTask === 'roulette') {
-        try {
-            const rouletteResult = await roulette(req);
-            console.log(rouletteResult);
+    try {
+        const rouletteResult = await roulette(req);
+        console.log(rouletteResult);
 
-            // prepare and send the response to the client:
-            res.setHeader('Access-Control-Allow-Origin', '*');
-            // allow client to access the custom 'request-result' header:
-            res.setHeader('Access-Control-Expose-Headers', 'request-result');
-            // set the custom header 'request-result'
-            res.setHeader('request-result', 'Request ' + req.method + ' was received successfully.');
-            res.status(200).send(rouletteResult);
-        } catch (error) {
-            console.log('There was a problem: ', error);
-            res.status(500).send("Server Error");
-        }
+        // prepare and send the response to the client:
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        // allow client to access the custom 'request-result' header:
+        res.setHeader('Access-Control-Expose-Headers', 'request-result');
+        // set the custom header 'request-result'
+        res.setHeader('request-result', 'Request ' + req.method + ' was received successfully.');
+        res.status(200).send(rouletteResult);
+    } catch (error) {
+        console.log('There was a problem: ', error);
+        res.status(500).send("Server Error");
     }
+    
     res.end();
 });
 

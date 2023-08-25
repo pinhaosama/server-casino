@@ -8,7 +8,8 @@ const port = 3000;
 const {
     readCsvFileBJ,
     shuffle,
-    getUserInfo
+    getUserInfo,
+    changeCoin
 } = require('./my-modules/blackjack-server.js');
 const { readCsvFile } = require('./my-modules/slot.js');
 const { roulette } = require('./my-modules/roulette')
@@ -17,10 +18,14 @@ app.use(cors({
     origin: 'http://localhost:5000'
 }));
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 app.options('/', (req, res) => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:5000');
     res.header('Access-Control-Allow-Headers', 'task');
     res.header('Access-Control-Allow-Methods', 'GET');
+    res.header('Access-Control-Allow-Methods', 'POST');
     res.sendStatus(200);
 });
 
@@ -83,7 +88,8 @@ app.post('/blackjack', async function (req, res) {
             // const username = reqBody.username;
             // const password = reqBody.password;
             // await addUser(filePath, username, password);
-
+            await changeCoin(req.body.coin);
+            res.status(200);
         } catch (error) {
             console.log('There was a problem responding with a rotation: ', error);
             res.status(500).send("Server Error");
